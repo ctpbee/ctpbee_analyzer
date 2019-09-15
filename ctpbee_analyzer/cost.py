@@ -88,8 +88,8 @@ def cost(func):
     def wrap(*args, **kwargs):
         h = HowMany()
         p = psutil.Process(os.getpid())
-        start_time = time.time()
         start_cpu = p.cpu_percent()
+        start_time = time.time()
         try:
             return h(func)(*args, **kwargs)
         finally:

@@ -9,11 +9,11 @@ def read(fname):
 
 setuptools.setup(
     name="ctpbee_analyzer",
-    version="0.0.3",
+    version="0.0.4",
     author="faithforus",
     author_email="ljunf817@163.com",
     description="ctpbee_analyzer",
-    # long_description=read('README.rst'),
+    long_description=read('README.rst'),
     keywords="python package ctpbee",
     url="https://github.com/ctpbee/ctpbee_analyzer",
     packages=setuptools.find_packages(),

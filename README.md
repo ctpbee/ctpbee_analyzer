@@ -4,7 +4,7 @@
 ###示例
 
 ```
-from ctpbee_analyzer.Cost import cost
+from ctpbee_analyzer import cost
 
 
 @cost
