@@ -1,4 +1,4 @@
-from Cost import cost
+from analyzer.Cost import cost
 
 
 @cost
