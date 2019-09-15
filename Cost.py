@@ -76,7 +76,7 @@ def show(h, time, cpu):
     stream.write(header + '\n')
     stream.write(u'=' * len(header) + '\n')
     result = template.format(h.cost_queue['name'],
-                             temp_time.format(time),
+                             temp_time.format(time * 1000),
                              temp_cpu.format(cpu),
                              temp_memory.format(h.cost_queue['memory'])
                              )
