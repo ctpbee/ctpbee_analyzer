@@ -80,7 +80,7 @@ def show(h, time, cpu):
                              temp_cpu.format(cpu),
                              temp_memory.format(h.cost_queue['memory'])
                              )
-    stream.write('\r' + result + '\n')
+    stream.write(result + '\n')
 
 
 def cost(func):

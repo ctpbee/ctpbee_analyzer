@@ -1,4 +1,4 @@
-from analyzer.Cost import cost
+from ctpbee_analyzer.cost import cost
 
 
 @cost
