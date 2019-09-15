@@ -6,15 +6,15 @@ import os
 
 
 class HowMany:
-    def __init__(self):
+    def __init__(self, process=None):
         self.cost_queue = {}
         self.enable_count = 0
         self._original_trace_function = None
+        self.process = process if process else psutil.Process(os.getpid())
 
     def trace_memory(self, frame, event, arg):
         if event == 'return':
-            p = psutil.Process(os.getpid())
-            self.cost_queue['memory'] = p.memory_info()[0] / _TWO_20
+            self.cost_queue['memory'] = self.process.memory_info()[0] / _TWO_20
         if self._original_trace_function is not None:
             self._original_trace_function(frame, event, arg)
         return self.trace_memory
@@ -86,8 +86,8 @@ def show(h, time, cpu):
 def cost(func):
     @wraps(func)
     def wrap(*args, **kwargs):
-        h = HowMany()
         p = psutil.Process(os.getpid())
+        h = HowMany(p)
         start_cpu = p.cpu_percent()
         start_time = time.time()
         try:
