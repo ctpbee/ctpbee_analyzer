@@ -65,7 +65,7 @@ class HowMany:
 template = '{0:<15} {1:<15} {2:<15} {3:<15}'
 temp_time = '{:.3f} ms'
 temp_cpu = '{} %'
-temp_memory = '{:.3f} MB'
+temp_memory = '{:.3f} MiB'
 _TWO_20 = float(2 ** 20)
 
 header = template.format('Function', 'Spend', 'CPU', 'Memory')
@@ -73,7 +73,7 @@ header = template.format('Function', 'Spend', 'CPU', 'Memory')
 
 def show(h, time, cpu):
     stream = sys.stdout
-    stream.write(header + '\n')
+    stream.write('\n' + header + '\n')
     stream.write(u'=' * len(header) + '\n')
     result = template.format(h.cost_queue['name'],
                              temp_time.format(time * 1000),
@@ -90,10 +90,11 @@ def cost(func):
         p = psutil.Process(os.getpid())
         start_time = time.time()
         start_cpu = p.cpu_percent()
-        val = h(func)(*args, **kwargs)
-        end_time = time.time()
-        end_cpu = p.cpu_percent()
-        show(h, end_time - start_time, end_cpu - start_cpu)
-        return val
+        try:
+            return h(func)(*args, **kwargs)
+        finally:
+            end_time = time.time()
+            end_cpu = p.cpu_percent()
+            show(h, end_time - start_time, end_cpu - start_cpu)
 
     return wrap

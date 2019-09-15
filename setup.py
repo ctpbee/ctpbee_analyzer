@@ -9,13 +9,13 @@ def read(fname):
 
 setuptools.setup(
     name="ctpbee_analyzer",
-    version="0.1.8",
+    version="0.0.1",
     author="faithforus",
     author_email="ljunf817@163.com",
-    description="colour-printing",
-    long_description=read('README.rst'),
-    keywords="python package print",
-    url="https://github.com/Faithforus/Colour-printing",
+    description="ctpbee_analyzer",
+    # long_description=read('README.rst'),
+    keywords="python package ctpbee",
+    url="https://github.com/ctpbee/ctpbee_analyzer",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
