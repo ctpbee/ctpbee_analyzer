@@ -9,7 +9,7 @@ def read(fname):
 
 setuptools.setup(
     name="ctpbee_analyzer",
-    version="0.0.4",
+    version="0.0.5",
     author="faithforus",
     author_email="ljunf817@163.com",
     description="ctpbee_analyzer",
